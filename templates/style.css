@@ -1,0 +1,48 @@
+.grid_container {
+  display: grid;
+  grid-template-areas: "header" "main" "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 4rem 1fr 2rem;
+  height: 100%;
+}
+.navbar {
+  margin: auto 2%;
+  justify-content: space-between;
+  width: 100%;
+}
+.pacific_logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.nav_right_div > * {
+  font-size: 1.1rem;
+  margin:0 0.5rem;
+}
+
+
+  /* ------------prodcuct card styling-------------- */
+  .card{
+    border: 2px solid #203040;
+    background-color: #4e7297;
+    width: fit-content;
+    margin: 1.5%;
+    flex-direction: column;
+}
+
+.card img{
+    max-width: 18rem;
+    width: 100%;
+}
+.card_body{
+    padding: 1rem;
+}
+.card_body>*{
+    margin: 0.5rem 0;
+}
+.ratings span{
+    color: #f0c040;
+}
+.card_body .price{
+    font-size: 1.5rem;
+    font-weight: bold;
+}

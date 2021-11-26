@@ -1,0 +1,27 @@
+{
+  "name": "tut4-pacific-ecom-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "back-end/server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon back-end/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inderjeetofc/pacific-ecom-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inderjeetofc/pacific-ecom-app/issues"
+  },
+  "homepage": "https://github.com/inderjeetofc/pacific-ecom-app#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
