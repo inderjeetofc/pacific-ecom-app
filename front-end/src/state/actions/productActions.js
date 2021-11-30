@@ -11,8 +11,7 @@ export const listProducts = () => async (dispatch) => {
     payLoad:"loading"
   });
   try {
-    const { data } = await axios.get("/api/products");
-    console.log("i am data :", data);
+    const {data}  = await axios.get("/api/products");
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payLoad: data,

@@ -9,28 +9,24 @@ import Product from "../components/Product";
 
 
 export default function HomeScreen() {
-
   // const [products,setProducts]=useState([]);
-
+  
   const dispatch = useDispatch(); // import dispatch
   const productsList = useSelector((state) => state.productList);
-  // console.log("state.productList",state.productList)
-  const {products} = productsList;
-  console.log("this is productLIst var",productsList)
+  let {products} = productsList;
 
+  products = Array.from(products); // convert to array before passing to map 
   useEffect(() => {
-
     // const fetchData = async function(){
-    //   const {data}=await axios.get('/api/products')
-    //   setProducts(data)
-    //   console.log("hola",data)
-    
-    dispatch(listProducts());
-  }, [dispatch]);
-  return (
-    <main className="row center">
+      //   const {data}=await axios.get('/api/products')
+      //   setProducts(data)
+      //   console.log("hola",data) 
+      dispatch(listProducts());
+    }, [dispatch]);
+    return (
+      <main className="row center">
       {products.map((product) => (
-        <Product key={product.id} product={product}></Product>
+       <Product key={product.id} product={product}></Product>
       ))}
     </main>
   );
