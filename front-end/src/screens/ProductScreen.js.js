@@ -1,26 +1,43 @@
-import React, { useState,useEffect } from "react";
-import axios from 'axios'
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { detailsProduct } from "../state/actions/productActions";
+// import axios from 'axios'
 // import data from "../data";
 import { useParams, Link } from "react-router-dom";
 import Rating from "../components/Rating";
 
 export default function ProductScreen(props) {
-  const [products,setProducts]=useState([]);
+  // const [products,setProducts]=useState([]);
+  // useEffect(() => {
+  //   const fetchData = async function(){
+  //     const {data}=await axios.get('/api/products')
+  //     setProducts(data)
+  //   }
+  //   fetchData()
+  // }, [])
+  const dispatch = useDispatch(); // import dispatch
+  const productDetails = useSelector((state) => state.productDetails);
+  let { Product } = productDetails;
+  let id = useParams().id; //get id from URL
+  //hook for qty
+  const [Qty, setQty] = useState(1);
+
   useEffect(() => {
-    const fetchData = async function(){
-      const {data}=await axios.get('/api/products')
-      setProducts(data)
-    }
-    fetchData()
-  }, [])
-  let id = useParams().id;
-  const Product = products.find((product) => product.id === id);
+    dispatch(detailsProduct(id));
+  }, [dispatch, id]);
+
+  // const Product = products.find((product) => product.id === id);
+
+  //function to handle on click on add to cart
+  const addToCartHandler = () => {
+    props.history.push(`/cart/:${id}/?Qty=${Qty}`);
+  };
   if (!Product) {
     return <div>Product Does'nt Exist !</div>;
   }
   return (
     <div>
-      <Link className="color-black" to="/">
+      <Link className="color-black" style={{display:'inline-block',marginBottom: '1rem',marginLeft: '1rem'}} to="/">
         Back to Result
       </Link>
       <div className="row top space-around">
@@ -65,9 +82,42 @@ export default function ProductScreen(props) {
                   </div>
                 </div>
               </li>
-              <li>
-                <button className="primary block">Add to Cart</button>
-              </li>
+              {Product.inStock > 0 && (
+                <>
+                  <li>
+                    <div className="row">
+                      <div>Qty</div>
+                      <div>
+                        <select
+                          value={Qty}
+                          onChange={(e) => setQty(e.target.value)}
+                        >
+                          {[...Array(Product.inStock).keys()].map((e) => {
+                            return (
+                              <option key={e + 1} value={e + 1}>
+                                {e + 1}
+                              </option>
+                            );
+                          })}
+                        </select>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                  <Link  to={`/cart/${id}?qty=${Qty}`}>
+                    <button className="primary block">
+                      Add to Cart
+                    </button>
+                    </Link>
+                    {/* <button
+                      onClick={addToCartHandler}
+                      className="primary block"
+                    >
+                      Add to Cart
+                    </button> */}
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route} from "react-router-dom";
+import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen.js";
 function App() {
@@ -18,12 +19,13 @@ function App() {
         </header>
         <main className="row center">
           <Routes>
+            <Route path="/cart/:id" element={<CartScreen/>}/>
             <Route path="/" element={<HomeScreen/>}/>
             <Route path="/product/:id" element={<ProductScreen/>}/>
           </Routes>
         </main>
-        <footer className="row">
-          <span> copyright&copy All rights reserved !</span>
+        <footer className="row center">
+          <span>copyright &copy; All rights reserved !</span>
         </footer>
       </div>
   );

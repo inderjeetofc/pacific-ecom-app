@@ -70,17 +70,18 @@ header {
 .failed{
   color: red;
 }
-button{
+input,select,button{
   width: 100%;
   padding: 0.5rem;
   font-size: 1.3rem;
   border-radius: 0.5rem;
   border: 0.1rem solid #a4a4a4;
+}
+button{
   background-color: #f8f8f8;
   cursor: pointer;
-
 }
-button:hover{
+input:hover,select:hover,button:hover{
   border:0.1rem solid #404040;
 }
 .primary{
