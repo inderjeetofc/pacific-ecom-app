@@ -29,15 +29,15 @@ export default function ProductScreen(props) {
   // const Product = products.find((product) => product.id === id);
 
   //function to handle on click on add to cart
-  const addToCartHandler = () => {
-    props.history.push(`/cart/:${id}/?Qty=${Qty}`);
-  };
+  // const addToCartHandler = () => {
+  //   props.history.push(`/cart/:${id}/?Qty=${Qty}`);
+  // };
   if (!Product) {
     return <div>Product Does'nt Exist !</div>;
   }
   return (
     <div>
-      <Link className="color-black" style={{display:'inline-block',marginBottom: '1rem',marginLeft: '1rem'}} to="/">
+      <Link className="color-black" style={{display:'inline-block',marginBottom: '1rem',marginLeft: '1rem',marginTop:'0.5rem'}} to="/">
         Back to Result
       </Link>
       <div className="row top space-around">

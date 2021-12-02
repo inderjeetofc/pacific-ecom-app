@@ -4,14 +4,18 @@ import { combineReducers } from "redux";
 import {productListReducer,productDetailsReducer} from "./reducers/productReducers";
 
 import { applyMiddleware, createStore, compose } from "redux";
+import { cartReducer } from './reducers/cartReducers';
 // import reducers from "./reducers/index";
-const initialState = {};
+const initialState = {
+  cart:{cartItem:localStorage.getItem('cartItem')?JSON.parse(localStorage.getItem('cartItem')):[]}
+};
 // const reducer = (state, action) => {
 //   return { products: data.products };
 // };
 const reducers = combineReducers({
   productList:productListReducer,
-  productDetails:productDetailsReducer
+  productDetails:productDetailsReducer,
+  cart:cartReducer
 })
 // console.log("i am reducers",reducers)
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__||compose;
