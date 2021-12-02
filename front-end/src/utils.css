@@ -55,6 +55,14 @@ header {
   max-width: 25rem;
   width: 100%;
 }
+.small{
+  max-width: 4rem;
+  width: 100%;
+
+}
+.min-30{
+  min-width: 30rem;
+}
 .top{
   align-items: flex-start;
 }
@@ -80,6 +88,9 @@ header {
   margin: 0rem 0.2rem;
  
 }
+/* .remove-align-items{
+  align-items: unset;
+} */
 input,select,button{
   width: 100%;
   padding: 0.5rem;
@@ -97,7 +108,9 @@ input:hover,select:hover,button:hover{
 .primary{
   background-color: #f0c040;
 }
-
+.screen-width{
+  width: 100vw;
+}
 ul{
   list-style: none;
 }
