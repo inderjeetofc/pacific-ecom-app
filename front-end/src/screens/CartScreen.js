@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useParams } from "react-router";
-import { addToCart } from "../state/actions/cartActions";
+import { addToCart, removeFromCart } from "../state/actions/cartActions";
 import { Link } from "react-router-dom";
+import MessageBox from "../components/MessageBox";
 
 export default function CartScreen(props) {
   const dispatch = useDispatch();
@@ -21,23 +22,29 @@ export default function CartScreen(props) {
     }
   }, [dispatch, productId, Qty]);
 
-  const removeFromCartHandler = () => {
-    //delete cart pdt
+  const removeFromCartHandler = (productId) => {
+    dispatch(removeFromCart(productId));
+  };
+  const checkoutHandler = () => {
+    // props.history.push('/signin?redirect=shipping')
   };
 
   return (
     <div>
-      <div className="row screen-width card_body">
+      <div className="row screen-width card_body top">
         <div className="col-2">
           <h1>Shopping Cart</h1>
           {cartItem.length === 0 ? (
-            <div>
-              cart is empty<Link to="/">Go Shopping</Link>
-            </div>
+            <MessageBox
+              msg={`Cart is Empty`}
+              link={`${(<Link to="/">Go Shopping</Link>)}`}
+            >
+              {/* //  <div>cart is empty<Link to="/">Go Shopping</Link></div> */}
+            </MessageBox>
           ) : (
             <ul>
               {cartItem.map((pdt) => (
-                <li keys={pdt.cartData.item}>
+                <li keys={pdt.cartData.id}>
                   <div className="row">
                     <div>
                       <img
@@ -74,7 +81,7 @@ export default function CartScreen(props) {
                     <div>
                       <button
                         type="button"
-                        onClick={removeFromCartHandler(pdt.cartData.id)}
+                        onClick={()=>removeFromCartHandler(pdt.cartData.id)} //call remove func in onclick to remove only that specific item
                       >
                         Delete
                       </button>
@@ -84,6 +91,34 @@ export default function CartScreen(props) {
               ))}
             </ul>
           )}
+        </div>
+        <div className="col-1 row center">
+          <div className="card card_body product-card-color">
+            <ul>
+              <li>
+                <h2>
+                  Subtotal :({cartItem.reduce((a, c) => a + c.qty, 0)}) items :
+                  ${" "}
+                  {Math.round(
+                    cartItem.reduce((a, c) => a + c.cartData.price * c.qty, 0) *
+                      100
+                  ) / 100}
+                </h2>
+              </li>
+              <li>
+                <Link to={"/signin?redirect=shipping"}>
+                  <button
+                    type="button"
+                    onClick={checkoutHandler}
+                    className="primary block"
+                    disabled={cartItem.length === 0}
+                  >
+                    Proceed to Checkout
+                  </button>
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

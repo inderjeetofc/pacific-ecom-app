@@ -61,7 +61,7 @@ header {
 
 }
 .min-30{
-  min-width: 30rem;
+  min-width: 20rem;
 }
 .top{
   align-items: flex-start;
@@ -87,6 +87,14 @@ header {
   font-size: 1rem;
   margin: 0rem 0.2rem;
  
+}
+.message-box{
+  user-select: auto;
+  font-size: 1.3rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  border: 2px solid red;
+  background-color: pink;
 }
 /* .remove-align-items{
   align-items: unset;

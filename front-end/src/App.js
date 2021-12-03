@@ -21,7 +21,7 @@ function App() {
             </div>
           </div>
         </header>
-        <main className="row center">
+        <main className="">
           <Routes>
             <Route path="/cart/:id" element={<CartScreen/>}/>
             <Route path="/" element={<HomeScreen/>}/>
