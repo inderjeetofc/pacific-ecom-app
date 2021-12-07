@@ -39,56 +39,54 @@ header {
 .space-around {
   justify-content: space-around;
 }
-.color-black{
+.color-black {
   color: black;
 }
 .col-1 {
   /* width: 30%; */
-  flex:1 1 20rem;
+  flex: 1 1 20rem;
 }
 .col-2 {
   /* width: 30%; */
-  flex:2 1 25rem;
+  flex: 2 1 25rem;
 }
 
 .large {
   max-width: 25rem;
   width: 100%;
 }
-.small{
+.small {
   max-width: 4rem;
   width: 100%;
-
 }
-.min-30{
+.min-30 {
   min-width: 20rem;
 }
-.top{
+.top {
   align-items: flex-start;
 }
-.border{
+.border {
   border: 2px solid black;
 }
-.block{
+.block {
   width: 100%;
 }
-.success{
+.success {
   color: green;
 }
-.failed{
+.failed {
   color: red;
 }
-.badge{
+.badge {
   background-color: red;
   display: inline-block;
   color: whitesmoke;
-  border-radius: 50%; 
+  border-radius: 50%;
   padding: 0.2rem;
   font-size: 1rem;
   margin: 0rem 0.2rem;
- 
 }
-.message-box{
+.message-box {
   user-select: auto;
   font-size: 1.3rem;
   padding: 1rem;
@@ -99,30 +97,34 @@ header {
 /* .remove-align-items{
   align-items: unset;
 } */
-input,select,button{
+input,
+select,
+button {
   width: 100%;
   padding: 0.5rem;
   font-size: 1.3rem;
   border-radius: 0.5rem;
   border: 0.1rem solid #a4a4a4;
 }
-button{
+button {
   background-color: #f8f8f8;
   cursor: pointer;
 }
-input:hover,select:hover,button:hover{
-  border:0.1rem solid #404040;
+input:hover,
+select:hover,
+button:hover {
+  border: 0.1rem solid #404040;
 }
-.primary{
+.primary {
   background-color: #f0c040;
 }
-.screen-width{
+.screen-width {
   width: 100vw;
 }
-ul{
+ul {
   list-style: none;
 }
-li{
+li {
   margin-top: 1rem;
 }
 a {
@@ -135,4 +137,18 @@ a:hover {
 footer {
   background-color: #203040;
   color: white;
+}
+.form {
+  max-width: 40rem;
+  margin: 2rem auto;
+
+  /* border: 2px solid black; */
+}
+.form > div {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+.form label {
+  margin: 0.5rem 0;
 }
