@@ -26,7 +26,7 @@ export default function HomeScreen() {
     return (
       <main className="row center">
       {products.map((product) => (
-       <Product key={product.id} product={product}></Product>
+       <Product key={product._id} product={product}></Product>
       ))}
     </main>
   );

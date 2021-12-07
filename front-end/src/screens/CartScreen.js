@@ -44,7 +44,7 @@ export default function CartScreen(props) {
           ) : (
             <ul>
               {cartItem.map((pdt) => (
-                <li keys={pdt.cartData.id}>
+                <li keys={pdt.cartData._id}>
                   <div className="row">
                     <div>
                       <img
@@ -66,7 +66,7 @@ export default function CartScreen(props) {
                         value={cartItem.qty}
                         onChange={(e) =>
                           dispatch(
-                            addToCart(pdt.cartData.id, Number(e.target.value))
+                            addToCart(pdt.cartData._id, Number(e.target.value))
                           )
                         }
                       >
@@ -81,7 +81,7 @@ export default function CartScreen(props) {
                     <div>
                       <button
                         type="button"
-                        onClick={()=>removeFromCartHandler(pdt.cartData.id)} //call remove func in onclick to remove only that specific item
+                        onClick={()=>removeFromCartHandler(pdt.cartData._id)} //call remove func in onclick to remove only that specific item
                       >
                         Delete
                       </button>

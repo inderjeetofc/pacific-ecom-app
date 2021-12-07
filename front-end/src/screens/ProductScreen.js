@@ -55,9 +55,9 @@ export default function ProductScreen(props) {
                 reviews={Product.reviews}
               ></Rating>
             </li>
-            <li>Price :${Product.price}</li>
+            <li>Price :<span className="price">${Product.price}</span></li>
             <li>
-              <p>Description:{Product.description}</p>
+              <p>Description:<span style={{fontSize:'1.3rem',color:'#203040'}}>{Product.description}</span></p>
             </li>
           </ul>
         </div>

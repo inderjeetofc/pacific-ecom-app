@@ -5,13 +5,13 @@ export const cartReducer = (state = { cartItem: [] }, action) => {
     case CART_ADD_ITEM:
       const item = action.payLoad;
       const existItem = state.cartItem.find(
-        (pdt) => pdt.cartData.id === item.cartData.id
+        (pdt) => pdt.cartData._id === item.cartData._id
       );
       if (existItem) {
         return {
           ...state,
           cartItem: state.cartItem.map((pdt) =>
-            pdt.cartData.id === existItem.cartData.id ? item : pdt
+            pdt.cartData._id === existItem.cartData._id ? item : pdt
           ),
         };
       } else return { ...state, cartItem: [...state.cartItem, item] };
@@ -20,7 +20,7 @@ export const cartReducer = (state = { cartItem: [] }, action) => {
       return {
         ...state,
         cartItem: state.cartItem.filter(
-          (pdt) => pdt.cartData.id !== action.payLoad
+          (pdt) => pdt.cartData._id !== action.payLoad
         ),
       };
     default:
