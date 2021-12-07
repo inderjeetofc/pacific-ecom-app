@@ -16,7 +16,6 @@ const data = {
   ],
   products: [
     {
-      id: "1",
       name: "Adidas t-shirt",
       category: "t-shirt",
       image: "/images/products/p1.jpg",
@@ -29,7 +28,6 @@ const data = {
       inStock: 50,
     },
     {
-      id: "2",
       name: "Adidas shirt",
       category: "t-shirt",
       image: "/images/products/p2.jpg",
@@ -42,7 +40,6 @@ const data = {
       inStock: 0,
     },
     {
-      id: "3",
       name: "Nike shirt",
       category: "shirt",
       image: "/images/products/p3.jpeg",
@@ -55,7 +52,6 @@ const data = {
       inStock: 956,
     },
     {
-      id: "4",
       name: "Dolce gabana jacket",
       category: "jacket",
       image: "/images/products/p4.jpg",
@@ -68,7 +64,6 @@ const data = {
       inStock: 85,
     },
     {
-      id: "5",
       name: "Nike jeans",
       category: "jeans",
       image: "/images/products/p5.jpg",
@@ -81,7 +76,6 @@ const data = {
       inStock: 0,
     },
     {
-      id: "6",
       name: "Puma jacket",
       category: "jacket",
       image: "/images/products/p6.jpg",
