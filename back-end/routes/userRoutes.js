@@ -37,12 +37,12 @@ router.post(
         });
       } else {
         res.status(401).send({
-          message: "inavlid password",
+          message: "Invalid password !",
         });
       }
     } else {
       res.status(401).send({
-        message: "Invalid email",
+        message: "Email does not Exist !",
       });
     }
   })

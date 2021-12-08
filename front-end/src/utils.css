@@ -90,9 +90,18 @@ header {
   user-select: auto;
   font-size: 1.3rem;
   padding: 1rem;
-  margin: 1rem 0;
+  margin: 1rem 0.5rem;
   border: 2px solid red;
   background-color: pink;
+}
+.loading-box{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #203040;
 }
 /* .remove-align-items{
   align-items: unset;
@@ -152,3 +161,24 @@ footer {
 .form label {
   margin: 0.5rem 0;
 }
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content {
+  position: absolute;
+  width: 6rem;
+  text-align: center;
+  display: none;
+  z-index: 1;
+  right: -6px;
+  font-size: 1rem;
+  background-color: #203040;
+  border-radius: 0.2rem;
+  padding: 1rem;
+}
+
+.dropdown:hover .dropdown-content{
+  display: block;
+}
+

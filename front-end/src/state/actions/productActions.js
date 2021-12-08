@@ -45,7 +45,7 @@ export const detailsProduct = (productId) => async (dispatch) => {
       payLoad:
         error.response && error.response.data.message
           ? error.response.data.message
-          : error.response,
+          : error.message,
     });
   }
 };

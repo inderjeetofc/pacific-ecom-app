@@ -1,16 +1,37 @@
-import React, { useState } from "react";
-import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import {} from "react-router-dom";
+import { useLocation } from "react-router";
+import { userSigninAction } from "../state/actions/userActions";
+import MessageBox from "../components/MessageBox";
+import LoadingBox from "../components/LoadingBox";
 
 export default function SigninScreen() {
-    const [email,setEmail]=useState('');
-    const [password,setPassword]=useState('');
-    const submitHandler=(e)=>{
-        e.preventDefault();
-    }
+  let navigate = useNavigate();
+  const dispatch = useDispatch();
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo, loading, error } = userSignin;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(userSigninAction(email, password));
+  };
+  let redirectUser = useLocation().search;
+  const redirectUrl = redirectUser ? redirectUser.split("=")[1] : "";
+  console.log(`/${redirectUrl}`);
+  useEffect(() => {
+    if (userInfo) return navigate(`/${redirectUrl}`);
+  }, [userInfo, redirectUrl, navigate]);
   return (
     <div>
       <form className="form" onSubmit={submitHandler}>
-          <div><h1>Sign In</h1></div>
+        <div>
+          <h1>Sign In</h1>
+        </div>
+        {loading && <LoadingBox>LOADING...</LoadingBox>}
+        {error && <MessageBox variant={`message-box`}>{error}</MessageBox>}
         <div>
           <label htmlFor="email">Email</label>
           <input
@@ -40,7 +61,10 @@ export default function SigninScreen() {
         <div>
           <label></label>
           <div>
-            New customer ?{" "}<Link to="/register" className="color-black">Create your Account</Link>
+            New customer ?{" "}
+            <Link to="/register" className="color-black">
+              Create your Account
+            </Link>
           </div>
         </div>
       </form>

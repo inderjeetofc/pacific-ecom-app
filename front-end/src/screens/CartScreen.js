@@ -35,11 +35,8 @@ export default function CartScreen(props) {
         <div className="col-2">
           <h1>Shopping Cart</h1>
           {cartItem.length === 0 ? (
-            <MessageBox
-              msg={`Cart is Empty`}
-              link={`${(<Link to="/">Go Shopping</Link>)}`}
-            >
-              {/* //  <div>cart is empty<Link to="/">Go Shopping</Link></div> */}
+            <MessageBox variant={`message-box`}>
+              Cart is Empty !{" "}<Link to="/" >Go Shopping</Link>
             </MessageBox>
           ) : (
             <ul>
@@ -81,7 +78,7 @@ export default function CartScreen(props) {
                     <div>
                       <button
                         type="button"
-                        onClick={()=>removeFromCartHandler(pdt.cartData._id)} //call remove func in onclick to remove only that specific item
+                        onClick={() => removeFromCartHandler(pdt.cartData._id)} //call remove func in onclick to remove only that specific item
                       >
                         Delete
                       </button>

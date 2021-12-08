@@ -20,11 +20,13 @@ router.get(
 router.get(
   "/:id",
   expressAsyncHandler(async (req, res) => {
-    const productId = req.params.id;
-    let product = await productModel.findById({_id:productId});
+    const _id = req.params.id;
+    let product = await productModel.findById(_id);
     if (product) {
       res.status(200).send(product);
-    } else res.status(404).send({ message: "Product not found" });
+    } else {
+      res.status(404).send({ message: "Product not found !" });
+    }
   })
 );
 module.exports = router;

@@ -5,6 +5,8 @@ import { detailsProduct } from "../state/actions/productActions";
 // import data from "../data";
 import { useParams, Link } from "react-router-dom";
 import Rating from "../components/Rating";
+import MessageBox from "../components/MessageBox";
+import LoadingBox from "../components/LoadingBox";
 
 export default function ProductScreen(props) {
   // const [products,setProducts]=useState([]);
@@ -17,7 +19,7 @@ export default function ProductScreen(props) {
   // }, [])
   const dispatch = useDispatch(); // import dispatch
   const productDetails = useSelector((state) => state.productDetails);
-  let { Product } = productDetails;
+  let { Product, loading, error } = productDetails;
   let id = useParams().id; //get id from URL
   //hook for qty
   const [Qty, setQty] = useState(1);
@@ -33,11 +35,25 @@ export default function ProductScreen(props) {
   //   props.history.push(`/cart/:${id}/?Qty=${Qty}`);
   // };
   if (!Product) {
-    return <div>Product Does'nt Exist !</div>;
+    return (
+      <>{error && <MessageBox variant={`message-box`}>{error}</MessageBox>}</>
+    );
+  }
+  if (loading) {
+    return <> {loading && <LoadingBox>Loading...</LoadingBox>}</>;
   }
   return (
     <div>
-      <Link className="color-black" style={{display:'inline-block',marginBottom: '1rem',marginLeft: '1rem',marginTop:'0.5rem'}} to="/">
+      <Link
+        className="color-black"
+        style={{
+          display: "inline-block",
+          marginBottom: "1rem",
+          marginLeft: "1rem",
+          marginTop: "0.5rem",
+        }}
+        to="/"
+      >
         Back to Result
       </Link>
       <div className="row top space-around">
@@ -55,9 +71,16 @@ export default function ProductScreen(props) {
                 reviews={Product.reviews}
               ></Rating>
             </li>
-            <li>Price :<span className="price">${Product.price}</span></li>
             <li>
-              <p>Description:<span style={{fontSize:'1.3rem',color:'#203040'}}>{Product.description}</span></p>
+              Price :<span className="price">${Product.price}</span>
+            </li>
+            <li>
+              <p>
+                Description:
+                <span style={{ fontSize: "1.3rem", color: "#203040" }}>
+                  {Product.description}
+                </span>
+              </p>
             </li>
           </ul>
         </div>
@@ -104,10 +127,8 @@ export default function ProductScreen(props) {
                     </div>
                   </li>
                   <li>
-                  <Link  to={`/cart/${id}?qty=${Qty}`}>
-                    <button className="primary block">
-                      Add to Cart
-                    </button>
+                    <Link to={`/cart/${id}?qty=${Qty}`}>
+                      <button className="primary block">Add to Cart</button>
                     </Link>
                     {/* <button
                       onClick={addToCartHandler}
