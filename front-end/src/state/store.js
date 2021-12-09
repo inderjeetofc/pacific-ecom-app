@@ -8,7 +8,7 @@ import {
 
 import { applyMiddleware, createStore, compose } from "redux";
 import { cartReducer } from "./reducers/cartReducers";
-import { userSigninReducer } from "./reducers/userReducers";
+import { userRegisterReducer, userSigninReducer } from "./reducers/userReducers";
 // import reducers from "./reducers/index";
 const initialState = {
   userSignin: {
@@ -30,6 +30,7 @@ const reducers = combineReducers({
   productDetails: productDetailsReducer,
   cart: cartReducer,
   userSignin: userSigninReducer,
+  userRegister: userRegisterReducer
 });
 // console.log("i am reducers",reducers)
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

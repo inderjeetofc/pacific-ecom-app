@@ -7,6 +7,7 @@ import ProductScreen from "./screens/ProductScreen.js";
 import SigninScreen from "./screens/SigninScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import { userSignoutAction } from "./state/actions/userActions";
+import RegisterScreen from "./screens/RegisterScreen";
 function App() {
   const dispatch = useDispatch()
   const userSignin = useSelector((state) => state.userSignin);
@@ -52,6 +53,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomeScreen />} />
           <Route path="/signin" element={<SigninScreen />} />
+          <Route path="/register" element={<RegisterScreen />} />
           <Route path="/shipping" element={<ShippingScreen />} />
           <Route path="/product/:id" element={<ProductScreen />} />
           <Route path="/cart/:id" element={<CartScreen />}/>

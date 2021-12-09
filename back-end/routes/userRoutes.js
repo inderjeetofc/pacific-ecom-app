@@ -3,9 +3,10 @@ const router = express.Router();
 const expressAsyncHandler = require("express-async-handler");
 const userModel = require("../models/userModel");
 const data = require("../data");
-const bcrypt = require('bcrypt')
-const _=require('lodash')
+const bcrypt = require("bcrypt");
+const _ = require("lodash");
 const { generateToken } = require("../utils");
+const { user } = require("../data");
 router.get(
   "/seed",
   expressAsyncHandler(async (req, res) => {
@@ -22,7 +23,7 @@ router.get(
 router.post(
   "/signin",
   expressAsyncHandler(async (req, res) => {
-    let userDataEntered = _.pick(req.body,['email','password']);
+    let userDataEntered = _.pick(req.body, ["email", "password"]);
     // console.log(userDataEntered)
     let userData = await userModel.findOne({ email: userDataEntered.email });
     // console.log(userData)
@@ -32,8 +33,8 @@ router.post(
           _id: userData._id,
           name: userData.name,
           email: userData.email,
-          isAdmin:userData.isAdmin,
-          token: await generateToken(req,res,userData)
+          isAdmin: userData.isAdmin,
+          token: await generateToken(req, res, userData),
         });
       } else {
         res.status(401).send({
@@ -43,6 +44,40 @@ router.post(
     } else {
       res.status(401).send({
         message: "Email does not Exist !",
+      });
+    }
+  })
+);
+router.post(
+  "/register",
+  expressAsyncHandler(async (req, res) => {
+    let userDataEntered = _.pick(req.body, [
+      "name",
+      "email",
+      "password",
+      "confirmPassword",
+    ]);
+    // console.log(userDataEntered)
+    let userData = await userModel.findOne({ email: userDataEntered.email });
+    if (userData) {
+      res.status(401).send({ message: "Email is already registered !" });
+    } else if (userDataEntered.password !== userDataEntered.confirmPassword) {
+      res
+        .status(401)
+        .send({ message: "Password and confirm password do not match !" });
+    } else {
+      let user = new userModel({
+        name: userDataEntered.name,
+        email: userDataEntered.email,
+        password: bcrypt.hashSync(userDataEntered.password, 8),
+      });
+      await user.save();
+      res.status(200).send({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        token: await generateToken(req, res, user),
       });
     }
   })

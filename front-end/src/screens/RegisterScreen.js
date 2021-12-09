@@ -3,23 +3,29 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import {} from "react-router-dom";
 import { useLocation } from "react-router";
-import { userSigninAction } from "../state/actions/userActions";
+import { userRegisterAction } from "../state/actions/userActions";
 import MessageBox from "../components/MessageBox";
 import LoadingBox from "../components/LoadingBox";
 
-export default function SigninScreen() {
+export default function RegisterScreen() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo, loading, error } = userSignin;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { userInfo, loading, error } = userRegister;
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(userSigninAction(email, password));
+    // if (password !== confirmPassword) {
+    //   alert("Password and confirm passwor do not match!");
+    // } else 
+    dispatch(userRegisterAction(name, email, password,confirmPassword));
   };
   let redirectUser = useLocation().search;
   const redirectUrl = redirectUser ? redirectUser.split("=")[1] : "";
+  // console.log(`/${redirectUrl}`);
   useEffect(() => {
     if (userInfo) return navigate(`/${redirectUrl}`);
   }, [userInfo, redirectUrl, navigate]);
@@ -27,10 +33,20 @@ export default function SigninScreen() {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Sign In</h1>
+          <h1>Create Account</h1>
         </div>
         {loading && <LoadingBox>LOADING...</LoadingBox>}
         {error && <MessageBox variant={`message-box`}>{error}</MessageBox>}
+        <div>
+          <label htmlFor="name">Name</label>
+          <input
+            id="name"
+            type="text"
+            placeholder="Enter name"
+            required
+            onChange={(e) => setName(e.target.value)}
+          ></input>
+        </div>
         <div>
           <label htmlFor="email">Email</label>
           <input
@@ -52,6 +68,16 @@ export default function SigninScreen() {
           ></input>
         </div>
         <div>
+          <label htmlFor="confirmPassword">Confirm Password</label>
+          <input
+            id="ConfirmPassword"
+            type="password"
+            placeholder="Enter Confirm Password"
+            required
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          ></input>
+        </div>
+        <div>
           <label></label>
           <button className="primary block" type="submit">
             Submit
@@ -60,12 +86,12 @@ export default function SigninScreen() {
         <div>
           <label></label>
           <div>
-            New customer ?{" "}
+            Already a registered user?{" "}
             <Link
-              to={`/register?redirect=${redirectUrl}`}
+              to={`/signin?redirect=${redirectUrl}`}
               className="color-black"
             >
-              Create your Account
+              Sign-in
             </Link>
           </div>
         </div>
