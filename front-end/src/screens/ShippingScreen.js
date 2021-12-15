@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CheckoutSteps from "../components/CheckoutSteps";
-import { saveShippingAddress } from "../state/actions/userActions";
+import { saveShippingAddress } from "../state/actions/cartActions";
 
 export default function ShippingScreen() {
   const dispatch = useDispatch();

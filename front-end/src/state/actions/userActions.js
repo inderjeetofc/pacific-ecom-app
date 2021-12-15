@@ -3,7 +3,6 @@ import {
   USER_REGISTER_FAIL,
   USER_REGISTER_REQUEST,
   USER_REGISTER_SUCCESS,
-  USER_SHIPPING_DETAILS,
   USER_SIGNIN_FAIL,
   USER_SIGNIN_REQUEST,
   USER_SIGNIN_SUCCESS,
@@ -59,10 +58,6 @@ export const userRegisterAction =
 export const userSignoutAction = () => async (dispatch) => {
   localStorage.removeItem("cartItem");
   localStorage.removeItem("userInfo");
+  localStorage.removeItem("shippingAddress");
   dispatch({ type: USER_SIGNOUT });
-};
-
-export const saveShippingAddress = (shippingDetails) => async (dispatch) => {
-  dispatch({ type: USER_SHIPPING_DETAILS, payLoad: shippingDetails });
-  localStorage.setItem("shippingAddress", JSON.stringify(shippingDetails));
 };

@@ -8,6 +8,7 @@ import SigninScreen from "./screens/SigninScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import { userSignoutAction } from "./state/actions/userActions";
 import RegisterScreen from "./screens/RegisterScreen";
+import PaymentScreen from "./screens/PaymentScreen";
 function App() {
   const dispatch = useDispatch()
   const userSignin = useSelector((state) => state.userSignin);
@@ -59,6 +60,7 @@ function App() {
           <Route path="/cart/:id" element={<CartScreen />}/>
           <Route path='/cart' element={<CartScreen />}/>
           <Route path='/shipping' element={<ShippingScreen />}/>
+          <Route path='/payment' element={<PaymentScreen />}/>
         </Routes>
       </main>
       <footer className="row center">
