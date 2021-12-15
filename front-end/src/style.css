@@ -21,7 +21,6 @@
 
 /* ------------prodcuct card styling-------------- */
 
-
 .card img {
   max-width: 18rem;
   width: 100%;
@@ -30,8 +29,8 @@
 .card_body > * {
   margin: 0.5rem 0;
 }
-.product-card-color{
-  background-color:rgb(253, 237, 240);
+.product-card-color {
+  background-color: rgb(253, 237, 240);
 }
 .ratings span {
   color: #f0c040;
@@ -43,4 +42,19 @@
 .price {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+.checkout-steps {
+  margin-top: 0.5rem;
+  padding: 0 1.5rem;
+}
+.checkout-steps > div {
+  border-top: 0.3rem solid #c0c0c0;
+  padding-top: 0.5rem;
+  flex: 1;
+  margin: 0 0.1rem;
+}
+.checkout-steps > div.active {
+  color: #f08000;
+  border-top-color: #f08000;
 }

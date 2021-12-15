@@ -8,7 +8,7 @@ const generateToken = async function (req, res, userData) {
       email: userData.email,
       isAdmin: userData.isAdmin,
     },
-    process.env.JWT_SECRET_KEY,
+    process.env.JWT_SECRET_KEY||'secret_key_JWT_dev_env',
     { expiresIn: "2h" }
   );
 };

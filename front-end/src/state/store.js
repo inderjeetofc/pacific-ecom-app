@@ -8,7 +8,10 @@ import {
 
 import { applyMiddleware, createStore, compose } from "redux";
 import { cartReducer } from "./reducers/cartReducers";
-import { userRegisterReducer, userSigninReducer } from "./reducers/userReducers";
+import {
+  userRegisterReducer,
+  userSigninReducer,
+} from "./reducers/userReducers";
 // import reducers from "./reducers/index";
 const initialState = {
   userSignin: {
@@ -20,6 +23,9 @@ const initialState = {
     cartItem: localStorage.getItem("cartItem")
       ? JSON.parse(localStorage.getItem("cartItem"))
       : [],
+    shippingAddress: localStorage.getItem("shippingAddress")
+      ? JSON.parse(localStorage.getItem("shippingAddress"))
+      : {},
   },
 };
 // const reducer = (state, action) => {
@@ -30,7 +36,7 @@ const reducers = combineReducers({
   productDetails: productDetailsReducer,
   cart: cartReducer,
   userSignin: userSigninReducer,
-  userRegister: userRegisterReducer
+  userRegister: userRegisterReducer,
 });
 // console.log("i am reducers",reducers)
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
