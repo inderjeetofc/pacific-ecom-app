@@ -4,6 +4,7 @@ require("../back-end/db/conn"); // connection to db
 // const data = require("./data");
 const userRoutes = require("./routes/userRoutes");
 const productRoutes = require("./routes/productRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 //middlewares
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 //routes
 app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
 app.get("/", (req, res) => [res.send("this is the server")]);
 app.use((err, req, res, next) => {
   res.status(500).send({
