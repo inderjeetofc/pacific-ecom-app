@@ -26,7 +26,7 @@ export default function ShippingScreen() {
     postalCode,
     country,
   };
-  console.log(shippingDetails);
+  console.log("i am shipping details ",shippingDetails);
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress(shippingDetails));

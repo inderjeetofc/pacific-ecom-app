@@ -14,6 +14,7 @@ export default function SigninScreen() {
   const { userInfo, loading, error } = userSignin;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  console.log("i am token frm signin screen",userInfo)
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(userSigninAction(email, password));

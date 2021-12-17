@@ -94,6 +94,7 @@ header {
   margin: 1rem 0.5rem;
   border: 2px solid red;
   background-color: pink;
+  width: 100%;
 }
 .loading-box{
   height: 100%;
