@@ -40,6 +40,11 @@ export default function OrderScreen() {
                                                     {order.shippingAddress.postalCode},{order.shippingAddress.country}
                                                     <br />
                                                 </p>
+                                                {order.deliveryDetails.isDelivered ? <MessageBox variant="message-box-success success">
+                                                    Delivered !
+                                                </MessageBox> : <MessageBox variant="message-box failed">
+                                                    Not Delivered !
+                                                </MessageBox>}
                                             </div>
                                         </li>
                                         <li>
@@ -49,6 +54,11 @@ export default function OrderScreen() {
                                                     <strong>Method: </strong>
                                                     {order.paymentMethod}
                                                 </p>
+                                                {order.deliveryDetails.isPaid ? <MessageBox variant="message-box-success success">
+                                                    Payment successful !
+                                                </MessageBox> : <MessageBox variant="message-box failed">
+                                                    Not Paid !
+                                                </MessageBox>}
                                             </div>
                                         </li>
                                         <li>

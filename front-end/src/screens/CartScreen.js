@@ -63,7 +63,7 @@ export default function CartScreen(props) {
                         value={cartItem.qty}
                         onChange={(e) =>
                           dispatch(
-                            addToCart(pdt.cartData._id, Number(e.target.value))
+                            addToCart(pdt.cartData._id, Number(e.target.value))  //update quatity from cart screen
                           )
                         }
                       >

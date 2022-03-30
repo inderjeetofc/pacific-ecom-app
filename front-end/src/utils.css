@@ -89,11 +89,20 @@ header {
 }
 .message-box {
   user-select: auto;
-  font-size: 1.3rem;
-  padding: 1rem;
+  font-size: 1rem;
+  padding: 0.5rem;
   margin: 1rem 0.5rem;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   background-color: pink;
+  width: 100%;
+}
+.message-box-success {
+  user-select: auto;
+  font-size: 1rem;
+  padding: 0.5rem;
+  margin: 1rem 0.5rem;
+  /* border: 2px solid red; */
+  background-color: rgb(198, 243, 177);
   width: 100%;
 }
 .loading-box{
