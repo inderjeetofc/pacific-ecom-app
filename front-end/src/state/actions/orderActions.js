@@ -11,6 +11,7 @@ import {
 
 export const createOrder = (order) => async (dispatch, getState) => {
     dispatch({ type: ORDER_CREATE_REQUEST, payLoad: order });
+    console.log(order, "i am order");
     try {
         const { userSignin } = getState();
         const { userInfo } = userSignin;
@@ -33,7 +34,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
 
 export const detailsOrder = (orderId) => async (dispatch, getState) => {
     dispatch({ type: ORDER_DETAILS_REQUEST, payLoad: orderId })
-    const { userSignin: {userInfo} } = getState()
+    const { userSignin: { userInfo } } = getState()
     try {
         let { data } = await axios.get(`/api/orders/${orderId}`, { headers: { authorization: `Bearer ${userInfo.token}` } })
         dispatch({ type: ORDER_DETAILS_SUCCESS, payLoad: data })

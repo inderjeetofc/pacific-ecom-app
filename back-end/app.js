@@ -1,3 +1,5 @@
+const dotenv = require('dotenv')
+dotenv.config()
 const express = require("express");
 const app = express();
 require("../back-end/db/conn"); // connection to db
@@ -15,10 +17,12 @@ app.use("/api/users", userRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/orders", orderRoutes);
 app.get("/", (req, res) => [res.send("this is the server")]);
+//paypal service for payment gateway
+app.get("/api/config/paypal", (req, res) => [res.send(process.env.PAYPAL_CLIENT_ID || 'sd')]);
 app.use((err, req, res, next) => {
-  res.status(500).send({
-    message: err.message,
-  });
+    res.status(500).send({
+        message: err.message,
+    });
 });
 
 // app.get("/api/products", (req, res) => {

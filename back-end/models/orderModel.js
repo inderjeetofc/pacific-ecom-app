@@ -13,8 +13,8 @@ const orderSchema = mongoose.Schema(
                         required: true,
                     },
                 },
+                qty: { type: Number, required: true }
             },
-            { qty: { type: Number, required: true } },
         ],
         shippingAddress: {
             fullName: { type: String, required: true },
